@@ -1,3 +1,2 @@
 <?php
-
-echo "feature-a";
+$var = "ala";
