@@ -1,4 +1,4 @@
 <?php
 
-echo "hello everyone!";
+echo "hello world!";
 echo "new feature-d added .";
