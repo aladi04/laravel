@@ -1,4 +1,4 @@
 <?php
 
 echo "hello !";
-echo "new feature-c added .";
+echo "new feature-d added .";
