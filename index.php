@@ -1,7 +1,6 @@
 <?php
+
 require "functions/function.php";
 
-
-$heading = "HOME";
-
-
+$path = ($_SERVER["REQUEST_URI"]);
+echo $path;
