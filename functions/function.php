@@ -8,4 +8,3 @@ function dd($value){  //dump and die
 function isUrl($value) {
     return $_SERVER["REQUEST_URI"] === $value; 
 }
-
