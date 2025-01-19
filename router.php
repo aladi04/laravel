@@ -5,6 +5,8 @@ $url = parse_url($_SERVER["REQUEST_URI"])["path"];
 $routes = [
     "/abc/index.php" => "controllers/index.php",
     "/abc/about.php" => "controllers/about.php",
+    "/abc/notes.php" => "controllers/notes.php",
+    "/abc/note.php" => "controllers/note.php",
     "/abc/contact.php" => "controllers/contact.php",
 ];
 
