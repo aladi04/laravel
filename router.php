@@ -1,14 +1,5 @@
 <?php
-$url = parse_url($_SERVER["REQUEST_URI"])["path"];
-//echo $url;
-
-$routes = [
-    "/abc/index.php" => "controllers/index.php",
-    "/abc/about.php" => "controllers/about.php",
-    "/abc/notes.php" => "controllers/notes.php",
-    "/abc/note.php" => "controllers/note.php",
-    "/abc/contact.php" => "controllers/contact.php",
-];
+$routes = require "routes.php";
 
 function abort($code=404){
     http_response_code($code);
@@ -24,5 +15,6 @@ function route_to_controllers($url, $routes){
         abort();
     }
 }
-
+$url = parse_url($_SERVER["REQUEST_URI"])["path"];
+//echo $url;
 route_to_controllers($url, $routes);

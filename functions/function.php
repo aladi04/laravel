@@ -3,6 +3,8 @@ function dd($value){  //dump and die
     echo "<pre>";
     echo var_dump($value);
     echo "</pre>";
+
+    die();
 }
 
 function isUrl($value) {
