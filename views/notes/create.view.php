@@ -1,6 +1,6 @@
-<?php include "partials/header.php"; ?>
-<?php include "partials/nav.php"; ?>
-<?php include "partials/banner.php"; ?>
+<?php include "views/partials/header.php"; ?>
+<?php include "views/partials/nav.php"; ?>
+<?php include "views/partials/banner.php"; ?>
 <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <form action="note-create.php" method="POST">
@@ -27,5 +27,5 @@
 
     </div>
 </main>
-<?php include "partials/footer.php"; ?>
+<?php include "views/partials/footer.php"; ?>
 

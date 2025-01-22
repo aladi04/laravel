@@ -9,4 +9,4 @@ $id = 1;
 $query = "select * from `notes` where user_id = :id";
 $notes = $db->query($query, [":id"=>$id])->get();
 
-require "views/notes.view.php";
+require "views/notes/index.view.php";

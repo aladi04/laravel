@@ -12,4 +12,4 @@ $note = $db->query($query, [":id"=>$id])->findOrFail();
 $currentUser = 1;
 authorize($note["user_id"]===$currentUser);
 
-require "views/note.view.php";
+require "views/notes/show.view.php";
