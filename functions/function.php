@@ -3,7 +3,6 @@ function dd($value){  //dump and die
     echo "<pre>";
     echo var_dump($value);
     echo "</pre>";
-
     die();
 }
 
@@ -16,4 +15,13 @@ function authorize($condition, $status = Response::UNAUTHORIZED){
         abort($status);
     }
     return $condition;
+}
+
+function base_path($value){
+    return BASE_PATH . $value;
+}
+
+function view($value, $params=[]){
+    extract($params);
+    require base_path("views/" . $value);
 }

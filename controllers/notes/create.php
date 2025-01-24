@@ -1,11 +1,10 @@
 <?php
-require "validator.php";
-$config = require "config.php";
-$db = new Database($config["database"]);
-$heading = "Create a new Note";
-if ($_SERVER["REQUEST_METHOD"]==="POST"){
 
-    $errors=[];
+$config = require base_path("config.php");
+$db = new Database($config["database"]);
+
+$errors=[];
+if ($_SERVER["REQUEST_METHOD"]==="POST"){
     if (! validator::isValid($_POST["content"], 1, 10)){
         $errors["content"] = "Content is required !";
     }
@@ -18,4 +17,7 @@ if ($_SERVER["REQUEST_METHOD"]==="POST"){
     }
 }
 
-require "views/notes/create.view.php";
+view("notes/create.view.php", [
+    'heading' => 'Create a new Note',
+    'errors' => $errors,
+]);
