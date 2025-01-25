@@ -1,4 +1,5 @@
 <?php
+namespace models;
 
 class Response {
     const NOT_FOUND = 404;

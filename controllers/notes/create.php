@@ -1,5 +1,9 @@
 <?php
 
+use models\Database;
+use models\Validator;
+
+
 $config = require base_path("config.php");
 $db = new Database($config["database"]);
 

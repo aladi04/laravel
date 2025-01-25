@@ -1,5 +1,7 @@
 <?php
 
+namespace models;
+
 class validator{
 
     public static function isValid($value, $min=1, $max=INF){
