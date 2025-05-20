@@ -9,7 +9,7 @@ $db = new Database($config["database"]);
 
 $errors=[];
 if ($_SERVER["REQUEST_METHOD"]==="POST"){
-    if (! validator::isValid($_POST["content"], 1, 10)){
+    if (! validator::isValid($_POST["content"], 1, 30)){
         $errors["content"] = "Content is required !";
     }
 
