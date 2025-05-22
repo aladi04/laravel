@@ -8,12 +8,12 @@ function abort($code = 404) {
 
 function route_to_controllers($url, $routes) {
     if (array_key_exists($url, $routes)) {
-        require $routes[$url];
+        require __DIR__ . '/../' . $routes[$url];
     } else {
         abort();
     }
 }
 
-$routes = require __DIR__ . '/routes.php';
+$routes = require __DIR__ . '/../routes.php';
 $url = parse_url($_SERVER["REQUEST_URI"])["path"];
 route_to_controllers($url, $routes);
