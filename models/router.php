@@ -1,19 +1,51 @@
 <?php
 
-function abort($code = 404) {
-    http_response_code($code);
-    require "views/{$code}.php";
-    die();
-}
+namespace models;
 
-function route_to_controllers($url, $routes) {
-    if (array_key_exists($url, $routes)) {
-        require __DIR__ . '/../' . $routes[$url];
-    } else {
-        abort();
+class Router {
+    protected $routes = [];
+
+    protected function add($method, $uri, $controller){
+        $this->routes[] = [
+            'uri' => $uri,
+            'controller' => $controller,
+            'method' => $method
+        ];
+    }
+
+    public function get($uri, $controller){
+        $this->add('GET', $uri, $controller);
+    }
+
+    public function post($url, $controller){
+        $this->add('POST', $uri, $controller);
+    }
+
+    public function delete($url, $controller){
+        $this->add('DELETE', $uri, $controller);
+    }
+
+    public function patch($url, $controller){
+        $this->add('PATCH', $uri, $controller);
+    }
+
+    public function put($url, $controller){
+        $this->add('PUT', $uri, $controller);
+    }
+
+    public function route($uri, $method){
+        foreach ($this->routes as $route){
+            if ($route["uri"] == $uri && $route['method']== strtoupper($method)){
+                return require base_path($route['controller']);
+            }
+        }
+        $this->abort();
+    }
+
+    protected function abort($code = 404) {
+        http_response_code($code);
+        //require "views/{$code}.php";
+        require __DIR__ . '/../views/' . $code . '.php';
+        die();
     }
 }
-
-$routes = require __DIR__ . '/../routes.php';
-$url = parse_url($_SERVER["REQUEST_URI"])["path"];
-route_to_controllers($url, $routes);
