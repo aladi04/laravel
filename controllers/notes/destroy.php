@@ -9,11 +9,12 @@ $note = $db->query("select * from `notes` where id = :id", [":id"=>$_GET["id"]])
 
 $currentUser = 1;
 authorize($note["user_id"]===$currentUser);
+ 
 
+$query = "DELETE FROM `notes` WHERE id = :id";
+$db->query($query, ["id"=>$_POST["id"]]);
 
-view("notes/show.view.php", [
-    'heading' => 'My Note',
-    'note' => $note,
-]);
+header("location: /notes");
+exit();
 
 
