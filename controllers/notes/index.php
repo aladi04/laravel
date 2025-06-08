@@ -1,10 +1,9 @@
 <?php
 
-use models\Database;
+use models\App;
 
-$config = require base_path("config.php");
+$db =App::container()->resolve('models/Database');
 
-$db = new Database($config["database"]);
 $id = 1;
 $query = "select * from `notes` where user_id = :id";
 $notes = $db->query($query, [":id"=>$id])->get();
