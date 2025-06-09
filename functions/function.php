@@ -32,6 +32,6 @@ function view($value, $params=[]){
 
 function abort($code = 404) {
     http_response_code($code);
-    require "views/{$code}.php";
+    require base_path("views/{$code}.php");
     die();
 }
