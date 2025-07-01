@@ -35,3 +35,20 @@ function abort($code = 404) {
     require base_path("views/{$code}.php");
     die();
 }
+
+function login($user){
+    $_SESSION['user'] = [
+        'email' => $user['email']
+    ];
+
+    session_regenerate_id(true);  //to prevent a security attack called "session fixation."
+}
+
+function logout(){
+    $_SESSION = [];
+    session_destroy();
+
+    //delete cookie
+    $params= session_get_cookie_params();
+    setcookie('PHPSESSID', '', time()-3600, $params['domain'], $params['secure'], $params['httponly']);
+}

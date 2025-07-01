@@ -29,6 +29,7 @@ $user = $db->query("select * from user where email = :email", [
 ])->find();
 
 if ($user){
+
     header('location: /');
     exit();
 }else{
@@ -37,9 +38,7 @@ if ($user){
         'password' => password_hash($password, PASSWORD_DEFAULT),
     ]);
 
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+    login($user);
 
     header('location: /');
     exit();
