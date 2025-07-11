@@ -3,23 +3,16 @@
 use models\Database;
 use models\Validator;
 use models\App;
+use http\Forms\loginForm;
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$errors = [];
+$form = new loginForm();
 
-if (! Validator::isValidEmail($email)){
-    $errors['email'] = "Please enter a valid email !";
-}
-
-if (! validator::isValid($password)){
-    $errors["password"] = "Valid password is required !";
-}
-
-if (! empty($errors)){
+if (!$form->validate($email, $password)){
     return view('sessions/create.view.php', [
-        'errors' => $errors
+        'errors' => $form->getErrors()
     ]);
 }
 
