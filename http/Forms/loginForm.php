@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace http\Forms;
 use models\Validator;
 class loginForm {
@@ -23,5 +21,9 @@ class loginForm {
 
     public function getErrors(){
         return $this->errors;
+    }
+
+    public function addError($key, $desc){
+        $this->errors[$key]=$desc;
     }
 }
