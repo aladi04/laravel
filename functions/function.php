@@ -41,3 +41,6 @@ function redirect($path){
     exit();
 }
 
+function old($key, $default=''){
+    return models\Session::get('old')[$key] ?? $default;
+}

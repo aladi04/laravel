@@ -2,6 +2,7 @@
 
 namespace models;
 use models\Database;
+use models\Session;
 
 class Authenticator{
     public function attempt($email, $password){
@@ -32,12 +33,7 @@ class Authenticator{
     session_regenerate_id(true);  //to prevent a security attack called "session fixation."
 }
 
-public function logout(){
-    $_SESSION = [];
-    session_destroy();
-
-    //delete cookie
-    $params= session_get_cookie_params();
-    setcookie('PHPSESSID', '', time()-3600, $params['domain'], $params['secure'], $params['httponly']);
+public static function logout(){
+    Session::destroy();
 }
 }

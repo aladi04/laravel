@@ -1,6 +1,8 @@
 <?php
+use models\Authenticator;
 
-logout();
+//logout();
+Authenticator::logout();
 
 header('location: /');
 exit();
