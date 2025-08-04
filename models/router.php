@@ -63,4 +63,8 @@ class Router {
         require __DIR__ . '/../views/' . $code . '.php';
         die();
     }
+
+    public function previousUrl(){
+        return $_SERVER['HTTP_REFERER'];
+    }
 }
