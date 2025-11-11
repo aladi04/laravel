@@ -22,6 +22,10 @@ class Database{
         return $this;
     }
 
+    public function find() {
+        return $this->statement->fetch(); // returns one row or false
+    }
+
     public function findOrFail(){
         $result = $this->statement->fetch();
         if (! $result){

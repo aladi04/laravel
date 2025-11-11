@@ -29,3 +29,18 @@ function view($value, $params=[]){
     extract($params);
     require base_path("views/" . $value);
 }
+
+function abort($code = 404) {
+    http_response_code($code);
+    require base_path("views/{$code}.php");
+    die();
+}
+
+function redirect($path){
+    header("location: {$path}");
+    exit();
+}
+
+function old($key, $default=''){
+    return models\Session::get('old')[$key] ?? $default;
+}
